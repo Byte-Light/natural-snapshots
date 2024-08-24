@@ -1,4 +1,6 @@
+"use client"
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface Feature {
   icon: React.ReactNode;
@@ -14,7 +16,7 @@ const features: Feature[] = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="w-12 h-12 text-red-500"
+        className="w-12 h-12 text-blue-500"
       >
         <path
           strokeLinecap="round"
@@ -31,7 +33,7 @@ const features: Feature[] = [
       </svg>
     ),
     title: 'PHOTOGRAPHER',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem.',
+    description: 'Capturing the essence of moments, one click at a time.',
   },
   {
     icon: (
@@ -40,7 +42,7 @@ const features: Feature[] = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="w-12 h-12 text-red-500"
+        className="w-12 h-12 text-green-500"
       >
         <path
           strokeLinecap="round"
@@ -51,7 +53,7 @@ const features: Feature[] = [
       </svg>
     ),
     title: 'GRAPHICS DESIGN',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem.',
+    description: 'Creating visual stories that speak volumes.',
   },
   {
     icon: (
@@ -60,7 +62,7 @@ const features: Feature[] = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="w-12 h-12 text-red-500"
+        className="w-12 h-12 text-purple-500"
       >
         <path
           strokeLinecap="round"
@@ -71,24 +73,28 @@ const features: Feature[] = [
       </svg>
     ),
     title: 'VIDEO EDITING',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem.',
+    description: 'Crafting cinematic experiences with a touch of creativity.',
   },
 ];
 
 const Features: React.FC = () => {
   return (
-    <div className="py-12">
-      <h2 className="text-center text-2xl font-semibold mb-8">
+    <div className="py-16 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white">
+      <h2 className="text-center text-3xl md:text-4xl font-extrabold mb-10">
         I DO AMAZING THINGS FOR CLIENTS
       </h2>
       <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
         {features.map((feature, index) => (
-          <div key={index} className="text-center max-w-xs">
-            <div className="flex justify-center items-center w-24 h-24 mx-auto mb-4 border border-red-500 rounded-full">
+          <div key={index} className="text-center max-w-xs p-6 bg-gray-800 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+            <motion.div 
+              className="flex justify-center items-center w-24 h-24 mx-auto mb-4 border-2 border-white rounded-full"
+              whileHover={{ scale: 1.3, rotate: 20 }} // Enhanced scale and rotation on hover
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }} // Smooth and responsive spring effect
+            >
               {feature.icon}
-            </div>
-            <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-            <p className="text-gray-500">{feature.description}</p>
+            </motion.div>
+            <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+            <p className="text-gray-300">{feature.description}</p>
           </div>
         ))}
       </div>
